@@ -1,8 +1,8 @@
 
 module.exports = class extends require('./Item') {
 
-	constructor() {
-		super();
+	constructor(id) {
+		super(id);
 
 		this.visible = true;
 		this.color = '#fff';
@@ -10,7 +10,7 @@ module.exports = class extends require('./Item') {
 
 	async render() {
 
-		let node = document.createElement('div');
+		let node = this.priv.node = document.createElement('div');
 
 		// Apply style
 		node.style.position = 'absolute';
@@ -20,8 +20,6 @@ module.exports = class extends require('./Item') {
 		node.style.height = this.height;
 		node.style.opacity = this.opacity;
 		node.style.backgroundColor = this.color;
-
-		console.log(node.style);
 
 		return node;
 	}
